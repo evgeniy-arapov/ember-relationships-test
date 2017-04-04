@@ -1,0 +1,16 @@
+First Name: {{input type="text" key-up="handleFirstNameChange" value=staffData.firstname}} <br>
+Is Active: <input type="checkbox" onchange={{action "handleIsActiveChange"}}/><br>
+Branch ID: {{input type="text" key-up="handleBranchChange" value=staffData.branchId}} <br>
+
+<br>
+<button {{action "createStaff" staffData}}>Create Staff</button>
+
+
+<ol>
+  {{#each-in createdStaff as |key value|}}
+    <li>{{key}} - {{value}}</li>
+  {{/each-in}}
+</ol>
+
+
+{{yield}}
