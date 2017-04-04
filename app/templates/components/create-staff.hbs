@@ -1,16 +1,24 @@
+<h3>Создать сотрудника:</h3>
+<select name="branches" onchange={{action "handleBranchChange"}}>
+  <option value="0" selected>Без Филилала</option>
+  {{#each branches as |branch|}}
+    <option value={{branch.id}}>{{branch.name}}</option>
+  {{/each}}
+</select>
+<br><br>
+
 First Name: {{input type="text" key-up="handleFirstNameChange" value=staffData.firstname}} <br>
 Is Active: <input type="checkbox" onchange={{action "handleIsActiveChange"}}/><br>
-Branch ID: {{input type="text" key-up="handleBranchChange" value=staffData.branchId}} <br>
 
 <br>
-<button {{action "createStaff" staffData}}>Create Staff</button>
+<button {{action "createStaff" newStaff}}>Create Staff</button>
 
 
-<ol>
-  {{#each-in createdStaff as |key value|}}
-    <li>{{key}} - {{value}}</li>
-  {{/each-in}}
-</ol>
-
-
-{{yield}}
+{{#if createdStaff}}
+  <h3>Созданный сотрудник:</h3>
+  <ol>
+    {{#each-in createdStaff as |key value|}}
+      <li>{{key}} - {{value}}</li>
+    {{/each-in}}
+  </ol>
+{{/if}}

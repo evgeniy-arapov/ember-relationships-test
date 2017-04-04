@@ -1,26 +1,27 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-  staffData: {},
+  newStaff: {},
   actions: {
     handleFirstNameChange(value) {
-      this.staffData.firstname = value;
+      this.newStaff.firstname = value;
     },
     handleIsActiveChange(event) {
-      this.staffData.isActive = event.target.checked;
+      this.newStaff.isActive = event.target.checked;
     },
-    handleBranchChange(value) {
-      this.staffData.branchId = value;
+    handleBranchChange(event) {
+      this.newStaff.branchId = event.target.value;
     },
     createStaff(staff) {
       this.get('createStaff')(staff)
-        .then(res => {
-          console.log(res);
-          this.set('createdStaff', { ...res.data })
+        .then( res => {
+          // console.log(res);
+          let data = res.data;
+          this.set('createdStaff', data);
         })
         .catch( err => {
           console.log(err);
-        })
+        });
     }
   }
 });

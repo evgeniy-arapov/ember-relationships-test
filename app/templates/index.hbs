@@ -1,5 +1,5 @@
-<p>Персонал</p>
+<h2>Персонал</h2>
 
-{{create-staff createStaff=(action "createStaff")}}
+{{create-staff createStaff=(action "createStaff") branches=model }}
 
-{{outlet}}
+{{staff-list getStaffList=(action "getStaffList") removeStaff=(action "removeStaff")}}

@@ -1,9 +1,12 @@
 import ApplicationAdapter from './application';
 
 export default ApplicationAdapter.extend({
+  pathForType(modelName) {
+    return `branches/0/${modelName}`;
+  },
   urlForCreateRecord(modelName, snapshot) {
     let baseUrl = this.buildURL();
-    console.log(snapshot);
-    return `${baseUrl}/branches/${snapshot._attributes.branchId}/${modelName}`;
+    let branchId = snapshot.record.get('branch.id') || 0;
+    return `${baseUrl}/branches/${branchId}/${modelName}`;
   }
 });
