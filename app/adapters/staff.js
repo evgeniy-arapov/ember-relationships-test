@@ -6,5 +6,4 @@ export default ApplicationAdapter.extend({
     console.log(snapshot);
     return `${baseUrl}/branches/${snapshot.attributes.branchId}/${modelName}`;
   },
-  // namespace: "branches/0"
 });
