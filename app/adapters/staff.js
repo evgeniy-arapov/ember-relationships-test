@@ -4,6 +4,6 @@ export default ApplicationAdapter.extend({
   urlForCreateRecord(modelName, snapshot) {
     let baseUrl = this.buildURL();
     console.log(snapshot);
-    return `${baseUrl}/branches/${snapshot.attributes.branchId}/${modelName}`;
-  },
+    return `${baseUrl}/branches/${snapshot._attributes.branchId}/${modelName}`;
+  }
 });
