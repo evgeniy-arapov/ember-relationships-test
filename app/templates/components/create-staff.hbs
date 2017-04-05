@@ -7,11 +7,36 @@
 </select>
 <br><br>
 
-First Name: {{input type="text" key-up="handleFirstNameChange" value=staffData.firstname}} <br>
+First Name: {{input type="text" key-up="handleFirstNameChange" value=newStaffAttributes.firstname}} <br>
 Is Active: <input type="checkbox" onchange={{action "handleIsActiveChange"}}/><br>
 
+{{#if newStaffAttributes.branchId}}
+  <h4>Schdeules</h4>
+  <select name="week_day" onchange={{action "nandleSchduleChange"}}>
+    <option value="0">Понедельник</option>
+    <option value="1">Вторник</option>
+    <option value="2">Среда</option>
+    <option value="3">Четверг</option>
+    <option value="4">Пятница</option>
+    <option value="5">Суббота</option>
+    <option value="6">Воскресенье</option>
+  </select>
+  <input type="text" name="from" onkeyup={{action "nandleSchduleChange"}} value={{schedule.from}}>
+  <input type="text" name="to" onkeyup={{action "nandleSchduleChange"}} value={{schedule.to}}>
+  <button {{action "handleAddSchedule" schedule }}>Add Schedule</button>
+
+  {{#each staffSchedules.data as |staff index|}}
+    <p>
+      Week Day: {{staff.attributes.week_day}} | From: {{staff.attributes.from}} | To: {{staff.attributes.to}} ||
+      <button {{action "handleRemoveSchedule" index}}>Remove</button>
+    </p>
+  {{else}}
+    <p>No one Schedules</p>
+  {{/each}}
+{{/if}}
+
 <br>
-<button {{action "createStaff" newStaff}}>Create Staff</button>
+<button {{action "createStaff"}}>Create Staff</button>
 
 
 {{#if createdStaff}}

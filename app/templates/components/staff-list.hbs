@@ -1,7 +1,7 @@
 <h3>Все сотрудники:</h3>
 {{#each staffCollection as |staff|}}
   <p>
-    Firts Name: {{staff.firstname}}<br>
+    First Name: {{staff.firstname}}<br>
     ID: {{staff.id}}<br>
     <button {{action "handleRemoveStaff" staff.id}}>Remove Staff</button>
   </p>

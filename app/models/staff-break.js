@@ -5,7 +5,7 @@ let { Model, attr, belongsTo } = DS;
 export default Model.extend({
   week_day: attr('number'),
   from: attr('string'),
-  to: attr('strng'),
+  to: attr('string'),
 
   staff: belongsTo('staff')
 });
